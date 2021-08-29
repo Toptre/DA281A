@@ -6,18 +6,18 @@
  * =========
  */
 
-function max(a, b){
-    if(a < b){
+function max(a, b) {
+    if (a < b) {
         console.log(b);
-    }else{
+    } else {
         console.log(a);
     }
 }
 
-function min(a, b){
-    if(a > b){
+function min(a, b) {
+    if (a > b) {
         console.log(b);
-    }else{
+    } else {
         console.log(a);
     }
 }
@@ -27,73 +27,96 @@ function min(a, b){
  * =========
  */
 
- var testArray = range(10);
- console.log(testArray);
- 
- function range(n){
-     
-     var array = [];
-     
-     for(var i = 0; i < n; i++){
-         array.push(i);
-     }
-     
-     return array;
-     
-     }   
+var testArray = range(10);
+console.log(testArray);
+
+function range(n) {
+
+    var array = [];
+
+    for (var i = 0; i < n; i++) {
+        array.push(i);
+    }
+
+    return array;
+
+}
 /**
  * Uppgift 3
  * =========
- */    
- var numbers = [5, 10, 15, 20, 25];
- var sumOfNumbers = sum(numbers);
- console.log(sumOfNumbers);
+ */
+var numbers = [5, 10, 15, 20, 25];
+var sumOfNumbers = sum(numbers);
+console.log(sumOfNumbers);
 
- function sum(ar){
-     var sum = 0;
-     for (var i = 0; i < ar.length; i++){
+function sum(ar) {
+    var sum = 0;
+    for (var i = 0; i < ar.length; i++) {
         sum += ar[i];
-     }
-     return sum;
- }
- /**
- * Uppgift 4
- * =========
- */ 
-  
+    }
+    return sum;
+}
+/**
+* Uppgift 4
+* =========
+*/
 
-function countCharacter(str, c){
+
+function countCharacter(str, c) {
     var matchChar = 0;
-    for (var i = 0; i <str.length; i++) {
-        if(str.charAt(i) == c){
-            matchChar++; 
-        } 
+    for (var i = 0; i < str.length; i++) {
+        if (str.charAt(i) == c) {
+            matchChar++;
+        }
 
     }
     return matchChar;
 }
 
 var testString1 = "Jane Doe";
-  var testString2 = "Abracadabra";
-  
-  console.log(countCharacter(testString1, "e")); // => 2
-  console.log(countCharacter(testString2, "a")); // => 4 (obs. litet "a")
+var testString2 = "Abracadabra";
 
-   /**
- * Uppgift 5
- * =========
- */ 
-    palindrome("sirap - paris"); // skickar tillbaka "true"
-    palindrome("lorem ipsum");
+console.log(countCharacter(testString1, "e")); // => 2
+console.log(countCharacter(testString2, "a")); // => 4 (obs. litet "a")
 
-   function palindrome(pStr){
-    var revStr="";
-    for(var i=pStr.length; i >= 0;i--) {
-        
-    }   
-       if(pStr.reverse()==pStr){
-           return true;
-       } else {
-           return false;
-       }
-   }
+/**
+* Uppgift 5
+* =========
+*/
+
+function palindrome(pStr) {
+    var revStr = "";
+    for (var i = pStr.length - 1; i >= 0; i--) {
+        revStr += pStr[i];
+
+    }
+    if (revStr == pStr) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+* Uppgift 6
+* =========
+*/
+var person = { firstname: "sankar", lastname: "Blagodirov", age: 29, family: ["Emma", "Alexander"] };
+/**
+* Uppgift 7
+* =========
+*/
+
+function printPerson(person) {
+    console.log("Fullname:", person.firstname, person.lastname, "Age:", person.age);
+    console.log("Family members:");
+    for (var i = 0; i < person.family.length; i++) {
+        console.log(person.family[i]);
+    }
+}
+
+printPerson(person);
+/**
+* Uppgift 8
+* =========
+*/
