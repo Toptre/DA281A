@@ -58,7 +58,7 @@ buttonInfo.addEventListener("click", function(event){
 
  });
  /**
- * Uppgift 3
+ * Uppgift 4
  * =========
  */
 
@@ -67,9 +67,9 @@ buttonInfo.addEventListener("click", function(event){
   for (var i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener("click", function() {
 
-        var cnfm = confirm.apply("Are u sure?");
-        if(cnfm=="ok"){
-            this.removeParent(this);
+        var cnfm = confirm("Are u sure?");
+        if(cnfm==true){
+            this.parentElement.remove(this);
         }
           
       });
