@@ -15,3 +15,42 @@
     background-color: #d9edf7;
     border-color: #7294A5;
 }
+#apply-for-pet {
+    border: 1px solid black;
+    margin: auto;
+    width: 50%;
+    border-radius: 12px;
+    background-color: #ff9a9a;
+    font-family: roboto, serif;
+}
+#apply-for-pet>h2, p {
+    text-align: center;
+}
+#apply-for-pet>button {
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+    border: none;
+    border-radius: 4px;
+    width: 50%;
+    font-size: 20px;
+    background-color: #9b99ee;
+}
+#apply-for-pet>button:hover {
+    background-color: white;
+}
+input[type=text] {
+    border: 2px solid red;
+    background-color: #ff9a9a;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    width: 75%;
+    margin-left: 1em;
+    margin-right: 1em;
+    border-radius: 4px;
+}
+input[type=radio] {
+    margin-left: 45%;
+    margin-bottom: 1em;
+}
