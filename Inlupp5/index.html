@@ -1,0 +1,280 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <title>React-starter-kit</title>
+    <meta charset="utf-8">
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <!-- Rot-elementet för vår React-applikation -->
+    <div id="root"></div>
+    <div id="add"></div>
+    <!--
+            Inkludera vår data (musikalbums),
+            denna kommer vara sparad i variabeln "albums".
+        -->
+    <script src="js/albums.js"></script>
+    <script type="text/babel">
+        "use strict";
+        /* Sankar Blagodirov am6354 */
+        // Ta en titt i webbkonsollen på den data vi har att tillgå 
+        console.log(persons);
+        // Skapa en komponent
+        //<td><button onClickEdit={this.props.person.isEdit=false} type="button">Edit</button></td>
+        var Person = React.createClass({
+
+            getInitialState: function () {
+                // Notera att variabeln "albums" kommer från
+                // vår fil `js/albums.js`
+                return {
+
+                    showEdit: false,
+                    firstname: this.props.person.firstname,
+                    lastname: this.props.person.lastname,
+                    personalnumber: this.props.person.personalnumber,
+
+
+                };
+                this.updateFirstName = this.updateFirstName.bind(this)
+
+                this.updateLastName = this.updateLastName.bind(this)
+
+                this.updatePersonalNumber = this.updatePersonalNumber.bind(this)
+
+
+
+
+            },
+            updateFirstName: function (e) {
+                this.setState({
+                    firstname: e.target.value
+                })
+            },
+            updateLastName: function (e) {
+                this.setState({
+                    lastname: e.target.value
+                })
+            },
+            updatePersonalNumber: function (e) {
+                this.setState({
+                    personalnumber: e.target.value
+                })
+            },
+
+
+
+            render: function () {
+                return (
+                    <div>
+
+
+                        <tr>
+                            <td>{this.state.firstname}</td>
+                            <td>{this.state.lastname}</td>
+                            <td>{this.state.personalnumber}</td>
+                            <td><button onClick={() => this.setState({ showEdit: true })}>Edit</button></td>
+                            <td><button onClick={this.props.onClick} type="button">Remove</button></td>
+
+                        </tr>
+
+                        {this.state.showEdit ?
+                            <div className='Edit'>
+                                <input
+                                    type="text"
+                                    value={this.state.firstname}
+                                    onChange={this.updateFirstName}
+
+                                />
+                                <input
+                                    type="text"
+                                    value={this.state.lastname}
+                                    onChange={this.updateLastName}
+                                />
+                                <input
+                                    type="text"
+                                    value={this.state.personalnumber}
+                                    onChange={this.updatePersonalNumber}
+                                />
+                                <button onClick={() => this.setState({ showEdit: false })}>Save</button>
+                            </div>
+                            : null}
+                    </div>
+
+                )
+            }
+        });
+
+        var Persons = React.createClass({
+
+
+            getInitialState: function () {
+                // Notera att variabeln "albums" kommer från
+                // vår fil `js/albums.js`
+
+                return {
+
+                    persons: persons,
+                    showAdd: false
+
+                };
+
+                this.addAlbum = this.addAlbum.bind(this);
+                this.edit = this.edit.bind(this);
+                this.edita = this.edita.bind(this);
+            },
+
+            handleClick: function (index) {
+                // Radera ett album från listan
+                this.state.persons.splice(index, 1);
+                // Uppdatera tillståndet med albumen igen
+                this.setState({
+                    persons: this.state.persons
+                });
+            },
+
+            addAlbum: function (person) {
+                // Radera ett album från listan
+                this.state.persons.push(person);
+                // Uppdatera tillståndet med albumen igen
+                this.setState({
+                    persons: this.state.persons
+                });
+                this.setState({ showAddEdit: false });
+
+            },
+
+            render: function () {
+                // Om vi vill skicka med funktionen handleClick, som ska radera
+                // ett album från listan behöver vi dels ange `this` som det
+                // andra argumentet i vår "map" metod, samt ange 
+                // `this.handleClick.bind(this, index)` för att göra så att vår
+                // klick-metod har tillgång till vårt tillstånd samt index för
+                // vilket album som blev klickat - så vi vet vilket vi vill radera
+                return (
+
+                    <div>
+
+                        <div className="persons">
+
+
+
+                            {this.state.persons.map(function (person, index) {
+                                return (
+
+
+                                    <Person
+                                        person={person}
+
+                                        onClick={this.handleClick.bind(this, index)} />
+
+
+
+
+
+
+
+                                )
+                            }, this)}
+
+
+                        </div>
+                        <button onClick={() => this.setState({ showAddEdit: true })}>Add New</button>
+                        {this.state.showAddEdit ? <AddFriend addNew={this.addAlbum} /> : null}
+
+
+
+                    </div>
+                )
+            }
+
+        });
+
+        class AddFriend extends React.Component {
+            constructor(props) {
+                super(props)
+
+
+                this.state = {
+                    data: this.props.addNew,
+
+                    firstname: '', lastname: '', personalnumber: ''
+                }
+
+
+                this.updateFirstName = this.updateFirstName.bind(this)
+
+                this.updateLastName = this.updateLastName.bind(this)
+
+                this.updatePersonalNumber = this.updatePersonalNumber.bind(this)
+
+                this.handleAddNew = this.handleAddNew.bind(this)
+            }
+            updateFirstName(e) {
+                this.setState({
+                    firstname: e.target.value
+                })
+            }
+            updateLastName(e) {
+                this.setState({
+                    lastname: e.target.value
+                })
+            }
+            updatePersonalNumber(e) {
+                this.setState({
+                    personalnumber: e.target.value
+                })
+            }
+            handleAddNew() {
+                this.props.addNew({ firstname: this.state.firstname, lastname: this.state.lastname, personalnumber: this.state.personalnumber })
+                this.setState(state => ({
+                    ...state, firstname: '', lastname: '', personalnumber: ''
+                }))
+            }
+            render() {
+                return (
+                    <div>
+                        <input
+                            type="text"
+                            value={this.state.firstname}
+                            onChange={this.updateFirstName}
+                        />
+                        <input
+                            type="text"
+                            value={this.state.lastname}
+                            onChange={this.updateLastName}
+                        />
+                        <input
+                            type="text"
+                            value={this.state.personalnumber}
+                            onChange={this.updatePersonalNumber}
+                        />
+                        <button onClick={this.handleAddNew}>Add</button>
+                    </div>
+                )
+            }
+        }
+
+
+
+
+        // Rendera vårt innehåll
+
+        ReactDOM.render(
+            <Persons />,
+
+            document.getElementById("root")
+        );
+
+
+            // Placera din JavaScript här
+            // ...
+    </script>
+</body>
+
+</html>

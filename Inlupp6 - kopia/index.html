@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Air Qualty Info</title>
+    <meta charset="utf-8">
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/charts.css/dist/charts.min.css">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/a99cb1f441.js" crossorigin="anonymous"></script>
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQXGWMamzc7v2JewXnPJu2ykn3qwHlBBY">
+</script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <div class="px-4 py-5 my-5 text-center">
+        
+        <h1 class="display-5 fw-bold">Air Qualty Info</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">Enter a location and get air quality information. Built on <a href="https://openweathermap.org/api/air-pollution" target=_blank>Openweathermap Air Pollution API</a> and <a href="https://openweathermap.org/api/geocoding-api" target=_blank>Openweathermap Geocoding API</a> </br>
+          </br>
+        Reference table: </p>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Qualitative name</th>
+                <th>Index</th>
+                <th colspan="4">Pollutant concentration in &mu;g/m<sup>3</sup></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td  colspan="2"></td>
+                <td >NO<sub>2</sub></td>
+                <td >PM<sub>10</sub></td>
+                <td >O<sub>3</sub></td>
+                <td >PM<sub>25</sub> (optional)</td>
+              </tr>
+              <tr>
+                <td >Good</td>
+                <td >1</td>
+                <td >0-50</td>
+                <td >0-25</td>
+                <td >0-60</td>
+                <td >0-15</td>
+              </tr>
+              <tr>
+                <td >Fair</td>
+                <td >2</td>
+                <td >50-100</td>
+                <td >25-50</td>
+                <td >60-120</td>
+                <td >15-30</td>
+              </tr>
+              <tr>
+                <td >Moderate</td>
+                <td >3</td>
+                <td >100-200</td>
+                <td >50-90</td>
+                <td >120-180</td>
+                <td >30-55</td>
+              </tr>
+              <tr>
+                <td >Poor</td>
+                <td >4</td>
+                <td >200-400</td>
+                <td >90-180</td>
+                <td >180-240</td>
+                <td >55-110</td>
+              </tr>
+              <tr>
+                <td >Very Poor</td>
+                <td >5</td>
+                <td >>400</td>
+                <td >>180</td>
+                <td >>240</td>
+                <td >>110</td>
+              </tr>
+            </tbody>
+            </table>
+        </div>
+      </div>
+    
+    <div id="root"></div>
+
+    <script src="js/index.js" type="text/babel"></script>
+
+</body>
+
+</html>
